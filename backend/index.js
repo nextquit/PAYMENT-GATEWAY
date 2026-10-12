@@ -30,6 +30,22 @@ app.use(
 app.use(express.json());
 
 // ─── Routes ───────────────────────────────────────────────────
+app.get('/', (req, res) => {
+  res.json({
+    status: 'online',
+    success: true,
+    message: '🚀 Team HEXA - Fake Money Simulator & Judge Feedback API is live and healthy!',
+    health: '/api/health',
+    endpoints: {
+      feedback: '/api/feedback',
+      auth: '/api/auth',
+      payments: '/api/payments',
+      transactions: '/api/transactions',
+    },
+    timestamp: new Date().toISOString(),
+  });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'OK',
