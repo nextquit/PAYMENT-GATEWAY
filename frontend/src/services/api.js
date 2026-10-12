@@ -1,4 +1,9 @@
-const rawUrl = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/+$/, '');
+const defaultBackendUrl =
+  typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:5000'
+    : 'https://payment-gateway-ysz4.onrender.com';
+
+const rawUrl = (import.meta.env.VITE_API_URL || defaultBackendUrl).replace(/\/+$/, '');
 const API_BASE = rawUrl.endsWith('/api') ? rawUrl : `${rawUrl}/api`;
 
 const getHeaders = () => {
@@ -193,9 +198,9 @@ export const api = {
       }
       throw new Error('Primary feedback fetch failed');
     } catch (err) {
-      if (!API_BASE.includes('hackathon-3-0-awsf.onrender.com')) {
+      if (!API_BASE.includes('payment-gateway-ysz4.onrender.com')) {
         try {
-          const fallbackRes = await fetch('https://hackathon-3-0-awsf.onrender.com/api/feedback');
+          const fallbackRes = await fetch('https://payment-gateway-ysz4.onrender.com/api/feedback');
           if (fallbackRes.ok) {
             return await fallbackRes.json();
           }
