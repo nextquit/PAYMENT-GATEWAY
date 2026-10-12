@@ -4,6 +4,7 @@ import { ArrowUpRight, LogOut, MessageSquareText } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import GalaxyButton from './GalaxyButton';
 import { api } from '../services/api';
+import { cancelPendingFeedbackSound } from '../utils/sound';
 
 const Navbar = ({ onOpenProfile, onOpenAuth, onCloseToButton, onTransactionClick, onOpenFeedback, onOpenFeedbacksPage, isLanding, desktopNotice }) => {
   const { user, isAuthenticated, logout } = useAuth();
@@ -84,6 +85,7 @@ const Navbar = ({ onOpenProfile, onOpenAuth, onCloseToButton, onTransactionClick
   }, []);
 
   const handleFeedbackClick = () => {
+    cancelPendingFeedbackSound();
     setHasNewFeedback(false);
     localStorage.removeItem('hexa_has_unread_feedback');
     if (latestFeedbackIdRef.current) {
