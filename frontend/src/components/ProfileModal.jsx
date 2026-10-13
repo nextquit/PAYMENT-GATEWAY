@@ -90,7 +90,7 @@ const ProfileModal = ({ isOpen, onClose }) => {
     }
   };
 
-  const displayName = user?.fullName || (user?.username === 'fakemoney2@idc' ? 'Manni Singh' : 'Anubhav Tiwari');
+  const displayName = user?.fullName || (user?.username === 'fakemoney2@idc' ? 'Palak Singh' : 'Anubhav Tiwari');
 
   const createdDate = user?.createdAt
     ? new Date(user.createdAt).toLocaleDateString('en-IN', {

@@ -184,7 +184,7 @@ router.post('/login', async (req, res) => {
     const userObj = user.toJSON();
     if (userObj.username === 'fakemoney2@idc') {
       userObj.fictionalBank = userObj.fictionalBank || 'HDFC Bank';
-      userObj.fullName = userObj.fullName || 'Manni Singh';
+      userObj.fullName = userObj.fullName || 'Palak Singh';
     } else if (userObj.username === 'fakemoney@idc') {
       userObj.fictionalBank = userObj.fictionalBank || 'Union Bank';
       userObj.fullName = userObj.fullName || 'Anubhav Tiwari';

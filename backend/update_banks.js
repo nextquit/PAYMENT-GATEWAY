@@ -11,7 +11,7 @@ async function updateBanks() {
 
   const r2 = await mongoose.connection.db.collection('users').updateOne(
     { username: 'fakemoney2@idc' },
-    { $set: { fictionalBank: 'HDFC Bank', fullName: 'Manni Singh' } }
+    { $set: { fictionalBank: 'HDFC Bank', fullName: 'Palak Singh' } }
   );
   console.log('Updated fakemoney2@idc:', r2.modifiedCount);
 

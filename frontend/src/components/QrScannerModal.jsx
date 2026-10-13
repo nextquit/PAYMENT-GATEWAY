@@ -54,7 +54,7 @@ const QrScannerModal = ({ isOpen, onClose, onScanSuccess }) => {
     if (!text) return null;
     const trimmed = text.trim();
 
-    // 1. JSON QR e.g. {"payee": "fakemoney2@idc", "name": "Manni Singh", "amount": 500}
+    // 1. JSON QR e.g. {"payee": "fakemoney2@idc", "name": "Palak Singh", "amount": 500}
     try {
       const json = JSON.parse(trimmed);
       if (json.payee || json.identifier) {
@@ -249,7 +249,7 @@ const QrScannerModal = ({ isOpen, onClose, onScanSuccess }) => {
         handleDetected(code.data);
       } else {
         // Fallback demo payee if image is unreadable
-        handleDetected('upi://pay?pa=fakemoney2@idc&pn=Manni%20Singh');
+        handleDetected('upi://pay?pa=fakemoney2@idc&pn=Palak%20Singh');
       }
     };
     img.src = URL.createObjectURL(file);
@@ -559,7 +559,7 @@ const QrScannerModal = ({ isOpen, onClose, onScanSuccess }) => {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.65rem' }}>
             <button
-              onClick={() => handleDetected('upi://pay?pa=fakemoney2@idc&pn=Manni%20Singh&am=500')}
+              onClick={() => handleDetected('upi://pay?pa=fakemoney2@idc&pn=Palak%20Singh&am=500')}
               type="button"
               style={{
                 background: 'rgba(99, 102, 241, 0.25)',
@@ -577,7 +577,7 @@ const QrScannerModal = ({ isOpen, onClose, onScanSuccess }) => {
               }}
             >
               <Zap size={14} color="#818cf8" />
-              <span>Manni Singh</span>
+              <span>Palak Singh</span>
             </button>
 
             <button

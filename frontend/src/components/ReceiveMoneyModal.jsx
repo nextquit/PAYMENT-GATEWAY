@@ -15,7 +15,7 @@ const ReceiveMoneyModal = ({ isOpen, onClose }) => {
   const [copiedUpi, setCopiedUpi] = useState(false);
   const [qrDataUrl, setQrDataUrl] = useState('');
 
-  const fullName = user?.fullName || (user?.username === 'fakemoney2@idc' ? 'Manni Singh' : 'Anubhav Tiwari');
+  const fullName = user?.fullName || (user?.username === 'fakemoney2@idc' ? 'Palak Singh' : 'Anubhav Tiwari');
   const bankName = user?.fictionalBank || (user?.username === 'fakemoney2@idc' ? 'HDFC Bank' : 'Union Bank');
   const upiId = user?.virtualUpiId || `${user?.username || 'user'}@upi`;
 

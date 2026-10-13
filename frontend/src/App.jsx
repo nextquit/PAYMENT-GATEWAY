@@ -20,6 +20,7 @@ import BottomNav from './components/BottomNav';
 import TopIncomingNotification from './components/TopIncomingNotification';
 import FeedbackModal from './components/FeedbackModal';
 import FeedbacksPage from './components/FeedbacksPage';
+import DesktopLandingPage from './components/DesktopLandingPage';
 import GalaxyButton from './components/GalaxyButton';
 import { playFeedbackNotificationSound } from './utils/sound';
 import { api } from './services/api';
@@ -39,7 +40,7 @@ import {
   MessageSquareText
 } from 'lucide-react';
 
-const Dashboard = () => {
+const Dashboard = ({ onBackToLanding }) => {
   const { user, balance, refreshBalance, incomingNotification, dismissNotification, syncTrigger } = useAuth();
 
   // Modals state
@@ -108,24 +109,48 @@ const Dashboard = () => {
               Welcome back,
             </div>
             <h1 style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--text-main)', letterSpacing: '-0.02em' }}>
-              {user?.fullName || (user?.username === 'fakemoney2@idc' ? 'Manni Singh' : 'Anubhav Tiwari')}
+              {user?.fullName || (user?.username === 'fakemoney2@idc' ? 'Palak Singh' : 'Anubhav Tiwari')}
             </h1>
           </div>
 
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            background: '#eef2ff',
-            border: '1px solid #c7d2fe',
-            padding: '0.4rem 0.85rem',
-            borderRadius: '9999px',
-            fontSize: '0.8rem',
-            fontWeight: '700',
-            color: '#3730a3',
-          }}>
-            <ShieldCheck size={16} color="#4f46e5" />
-            <span>Verified & Active</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            {onBackToLanding && (
+              <button
+                onClick={onBackToLanding}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  background: 'rgba(239, 68, 68, 0.1)',
+                  border: '1px solid rgba(239, 68, 68, 0.3)',
+                  color: '#ef4444',
+                  padding: '0.4rem 0.85rem',
+                  borderRadius: '9999px',
+                  fontSize: '0.8rem',
+                  fontWeight: '700',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                ← Back to Showcase
+              </button>
+            )}
+
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              background: '#eef2ff',
+              border: '1px solid #c7d2fe',
+              padding: '0.4rem 0.85rem',
+              borderRadius: '9999px',
+              fontSize: '0.8rem',
+              fontWeight: '700',
+              color: '#3730a3',
+            }}>
+              <ShieldCheck size={16} color="#4f46e5" />
+              <span>Verified & Active</span>
+            </div>
           </div>
         </div>
 
@@ -299,11 +324,12 @@ const Dashboard = () => {
 };
 
 const AppContent = () => {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, user } = useAuth();
   
   // Helper to detect mobile viewport (width <= 768px)
   const isMobileViewport = () => typeof window !== 'undefined' && window.innerWidth <= 768;
   const [isMobile, setIsMobile] = useState(() => isMobileViewport());
+  const [desktopViewMode, setDesktopViewMode] = useState('landing'); // 'landing' | 'app'
 
   useEffect(() => {
     const handleResize = () => {
@@ -491,315 +517,15 @@ const AppContent = () => {
       return <FeedbacksPage onBack={handleBackFromFeedbacks} />;
     }
 
-  // Desktop & Laptop Screen: Show Hackathon IDC 3.0 landing page
-  if (!isMobile) {
+  // Desktop & Laptop Screen: Show full-featured scrolling showcase page
+  if (!isMobile && desktopViewMode === 'landing') {
     return (
-      <div
-        style={{
-          minHeight: '100vh',
-          width: '100vw',
-          display: 'flex',
-          flexDirection: 'column',
-          background: '#06080d',
-          color: '#ffffff',
-          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-          overflow: 'hidden',
-          position: 'relative',
-        }}
-      >
-        {/* ── Edge-to-Edge Background Video (Crystal Clear, Full Quality) ── */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            overflow: 'hidden',
-            zIndex: 0,
-            pointerEvents: 'none',
-          }}
-        >
-          <video
-            ref={(el) => {
-              if (el) {
-                el.muted = true;
-                el.play().catch(() => {});
-              }
-            }}
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              width: '100%',
-              height: '100%',
-              minWidth: '100%',
-              minHeight: '100%',
-              objectFit: 'cover',
-              transform: 'translate(-50%, -50%)',
-            }}
-          >
-            <source src="/bg.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        {/* ── Top nav bar (Compact Height) ── */}
-        <nav
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '52px',
-            zIndex: 50,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '0 2rem',
-            borderBottom: '1px solid rgba(255,255,255,0.08)',
-            background: 'rgba(6, 8, 13, 0.45)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-          }}
-        >
-          {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-            <div
-              style={{
-                width: '26px',
-                height: '26px',
-                borderRadius: '7px',
-                overflow: 'hidden',
-                background: '#090a0d',
-                border: '1px solid rgba(255,255,255,0.1)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <img src="/Hexa.png" alt="HexaPay" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </div>
-            <span style={{ fontWeight: 800, fontSize: '0.95rem', letterSpacing: '-0.01em' }}>
-              Hexa<span style={{ color: '#ef4444' }}>Pay</span>
-            </span>
-          </div>
-
-          {/* Feedbacks Button (Compact) */}
-          <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-            <GalaxyButton
-              shape="pill"
-              variant="subtle-green"
-              className={hasNewFeedback ? 'review-inner-glow' : ''}
-              onClick={handleDesktopFeedbackClick}
-              title={hasNewFeedback ? "New review received! Click to view" : "View Judges Feedbacks"}
-              style={{ transform: 'scale(0.88)', transformOrigin: 'right center' }}
-              icon={<MessageSquareText size={15} strokeWidth={2.4} color={hasNewFeedback ? '#fca5a5' : '#86efac'} />}
-            >
-              Feedbacks
-              {hasNewFeedback && (
-                <span
-                  style={{
-                    display: 'inline-block',
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    background: '#ef4444',
-                    boxShadow: '0 0 8px #ef4444',
-                    marginLeft: '5px',
-                    verticalAlign: 'middle',
-                  }}
-                />
-              )}
-            </GalaxyButton>
-          </div>
-        </nav>
-
-        {/* ── Hero section ── */}
-        <main
-          style={{
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            padding: '0 3.5rem',
-            paddingTop: '64px',
-            position: 'relative',
-            zIndex: 10,
-          }}
-        >
-          {/* Ambient red glow */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '55%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: '900px',
-              height: '400px',
-              background: 'radial-gradient(ellipse, rgba(239,68,68,0.12) 0%, transparent 70%)',
-              pointerEvents: 'none',
-            }}
-          />
-
-          {/* Event tag */}
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.55rem',
-              padding: '0.4rem 1rem',
-              borderRadius: '999px',
-              background: 'rgba(239, 68, 68, 0.12)',
-              border: '1px solid rgba(239, 68, 68, 0.35)',
-              backdropFilter: 'blur(8px)',
-              marginBottom: '2.2rem',
-              alignSelf: 'flex-start',
-            }}
-          >
-            <Smartphone size={13} color="#f87171" strokeWidth={2.5} />
-            <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#f87171', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              Hackathon · IDC 3.0
-            </span>
-          </div>
-
-          {/* Giant headline — Antigravity style */}
-          <div style={{ overflow: 'hidden', marginBottom: '0.2rem' }}>
-            <h1
-              style={{
-                fontSize: 'clamp(5rem, 13vw, 13rem)',
-                fontWeight: 900,
-                lineHeight: 0.88,
-                letterSpacing: '-0.04em',
-                margin: 0,
-                color: '#ffffff',
-                whiteSpace: 'nowrap',
-                textShadow: '0 4px 30px rgba(0,0,0,0.6)',
-              }}
-            >
-              Hackathon
-            </h1>
-          </div>
-          <div style={{ overflow: 'hidden', marginBottom: '2.5rem' }}>
-            <h1
-              style={{
-                fontSize: 'clamp(5rem, 13vw, 13rem)',
-                fontWeight: 900,
-                lineHeight: 0.88,
-                letterSpacing: '-0.04em',
-                margin: 0,
-                WebkitTextStroke: '2px rgba(255,255,255,0.28)',
-                color: 'transparent',
-                whiteSpace: 'nowrap',
-                textShadow: '0 4px 30px rgba(0,0,0,0.4)',
-              }}
-            >
-              IDC&nbsp;3.0
-            </h1>
-          </div>
-
-          {/* Sub-row */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'flex-end',
-              justifyContent: 'space-between',
-              gap: '2rem',
-            }}
-          >
-            {/* Description */}
-            <p
-              style={{
-                fontSize: '1.05rem',
-                color: 'rgba(255,255,255,0.6)',
-                fontWeight: 400,
-                lineHeight: 1.65,
-                maxWidth: '420px',
-                margin: 0,
-                textShadow: '0 2px 10px rgba(0,0,0,0.5)',
-              }}
-            >
-              Built at IDC 3.0 — a hackathon that pushed us to build
-              <br />a real-time payment gateway from scratch.
-              <br />
-              <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.88rem' }}>
-                Open on mobile for the full experience.
-              </span>
-            </p>
-
-            {/* Stats row */}
-            <div style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
-              {[
-                { value: '24', label: 'Hours' },
-                { value: '01', label: 'Team' },
-                { value: '∞', label: 'Caffeine' },
-              ].map(({ value, label }) => (
-                <div key={label} style={{ textAlign: 'right' }}>
-                  <div
-                    style={{
-                      fontSize: 'clamp(2rem, 4vw, 3.8rem)',
-                      fontWeight: 900,
-                      letterSpacing: '-0.04em',
-                      lineHeight: 1,
-                      color: '#ffffff',
-                      textShadow: '0 4px 20px rgba(0,0,0,0.5)',
-                    }}
-                  >
-                    {value}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '0.72rem',
-                      fontWeight: 600,
-                      color: 'rgba(255,255,255,0.45)',
-                      letterSpacing: '0.12em',
-                      textTransform: 'uppercase',
-                      marginTop: '0.2rem',
-                    }}
-                  >
-                    {label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </main>
-
-        {/* ── Bottom footer bar ── */}
-        <footer
-          style={{
-            position: 'relative',
-            zIndex: 10,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '1rem 2.5rem',
-            borderTop: '1px solid rgba(255,255,255,0.06)',
-            background: 'rgba(6, 8, 13, 0.5)',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)',
-          }}
-        >
-          <span style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.3)', fontWeight: 500 }}>
-            HexaPay
-          </span>
-          <div style={{ display: 'flex', gap: '2rem' }}>
-            {['Mobile Only', 'IDC 3.0', 'HexaPay'].map((t) => (
-              <span key={t} style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.3)', fontWeight: 500 }}>
-                {t}
-              </span>
-            ))}
-          </div>
-        </footer>
-
-        {/* Pulse animation keyframe injected via style tag */}
-        <style>{`
-          @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.85); }
-          }
-        `}</style>
-      </div>
+      <DesktopLandingPage
+        onOpenFeedbacks={handleDesktopFeedbackClick}
+        hasNewFeedback={hasNewFeedback}
+        onLaunchApp={() => setDesktopViewMode('app')}
+        user={user}
+      />
     );
   }
 
@@ -856,7 +582,7 @@ const AppContent = () => {
     );
   }
 
-    return <Dashboard />;
+    return <Dashboard onBackToLanding={!isMobile ? () => setDesktopViewMode('landing') : undefined} />;
   };
 
   return renderCurrentPageView();

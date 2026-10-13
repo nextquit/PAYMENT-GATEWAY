@@ -47,7 +47,7 @@ router.get('/balance', authenticate, async (req, res) => {
       virtualAccountNumber: freshUser.virtualAccountNumber,
       virtualUpiId: freshUser.virtualUpiId,
       username: freshUser.username,
-      fullName: freshUser.fullName || (freshUser.username === 'fakemoney2@idc' ? 'Manni Singh' : 'Anubhav Tiwari'),
+      fullName: freshUser.fullName || (freshUser.username === 'fakemoney2@idc' ? 'Palak Singh' : 'Anubhav Tiwari'),
     });
   } catch (error) {
     return res.status(500).json({

@@ -391,7 +391,7 @@ const BalanceModal = ({ isOpen, onClose }) => {
                     Account Holder
                   </span>
                   <span style={{ fontWeight: '700', color: 'var(--text-main)' }}>
-                    {data?.fullName || user?.fullName || (user?.username === 'fakemoney2@idc' ? 'Manni Singh' : 'Anubhav Tiwari')}
+                    {data?.fullName || user?.fullName || (user?.username === 'fakemoney2@idc' ? 'Palak Singh' : 'Anubhav Tiwari')}
                   </span>
                 </div>
               </div>

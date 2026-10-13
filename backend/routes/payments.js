@@ -66,7 +66,7 @@ router.get('/registered-recipients', authenticate, async (req, res) => {
       recipients: otherUsers.map((u) => ({
         _id: u._id,
         username: u.username,
-        fullName: u.fullName || (u.username === 'fakemoney2@idc' ? 'Manni Singh' : 'Anubhav Tiwari'),
+        fullName: u.fullName || (u.username === 'fakemoney2@idc' ? 'Palak Singh' : 'Anubhav Tiwari'),
         fictionalBank: u.fictionalBank || (u.username === 'fakemoney2@idc' ? 'HDFC Bank' : 'Union Bank'),
         virtualUpiId: u.virtualUpiId,
         virtualAccountMasked: u.virtualAccountMasked,
@@ -115,7 +115,7 @@ router.get('/lookup-recipient', authenticate, async (req, res) => {
       success: true,
       recipient: {
         username: found.username,
-        fullName: found.fullName || (found.username === 'fakemoney2@idc' ? 'Manni Singh' : 'Anubhav Tiwari'),
+        fullName: found.fullName || (found.username === 'fakemoney2@idc' ? 'Palak Singh' : 'Anubhav Tiwari'),
         fictionalBank: found.fictionalBank || (found.username === 'fakemoney2@idc' ? 'HDFC Bank' : 'Union Bank'),
         virtualUpiId: found.virtualUpiId,
         virtualAccountMasked: found.virtualAccountMasked,
@@ -289,8 +289,8 @@ router.post('/', authenticate, async (req, res) => {
 
     const senderBank = user.fictionalBank || (user.username === 'fakemoney2@idc' ? 'HDFC Bank' : 'Union Bank');
     const receiverBank = receiverUser.fictionalBank || (receiverUser.username === 'fakemoney2@idc' ? 'HDFC Bank' : 'Union Bank');
-    const senderDisplayName = user.fullName || (user.username === 'fakemoney2@idc' ? 'Manni Singh' : 'Anubhav Tiwari');
-    const receiverDisplayName = receiverUser.fullName || (receiverUser.username === 'fakemoney2@idc' ? 'Manni Singh' : 'Anubhav Tiwari');
+    const senderDisplayName = user.fullName || (user.username === 'fakemoney2@idc' ? 'Palak Singh' : 'Anubhav Tiwari');
+    const receiverDisplayName = receiverUser.fullName || (receiverUser.username === 'fakemoney2@idc' ? 'Palak Singh' : 'Anubhav Tiwari');
 
     // 9. Create sender's DEBIT transaction record
     const senderTxnId = generateTxnId();

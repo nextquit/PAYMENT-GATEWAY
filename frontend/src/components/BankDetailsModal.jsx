@@ -29,7 +29,7 @@ const BankDetailsModal = ({ isOpen, onClose }) => {
 
   const details = [
     { label: 'Bank Name', value: bankName, id: 'bank' },
-    { label: 'Account Holder', value: user?.fullName || (user?.username === 'fakemoney2@idc' ? 'Manni Singh' : 'Anubhav Tiwari'), id: 'holder' },
+    { label: 'Account Holder', value: user?.fullName || (user?.username === 'fakemoney2@idc' ? 'Palak Singh' : 'Anubhav Tiwari'), id: 'holder' },
     { label: 'IFSC Code', value: fictionalIfsc, copyValue: fictionalIfsc, id: 'ifsc' },
     { label: 'UPI ID', value: user?.virtualUpiId || (user?.username ? `${user.username}@upi` : 'user@upi'), id: 'upi' },
   ];
