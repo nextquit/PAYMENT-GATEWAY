@@ -39,6 +39,17 @@ export default function DesktopLandingPage({
 }) {
 
 
+  // ─── Hero Video Ref ───
+  const heroVideoRef = useRef(null);
+
+  useEffect(() => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.defaultMuted = true;
+      heroVideoRef.current.muted = true;
+      heroVideoRef.current.play().catch(() => {});
+    }
+  }, []);
+
   // ─── State for Mobile QR ───
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState('');
   const [copiedLink, setCopiedLink] = useState(false);
@@ -135,26 +146,43 @@ export default function DesktopLandingPage({
         </div>
       </nav>
 
-      {/* ── Hero Section ── */}
-      <section className="dlp-container dlp-hero-wrapper">
-        {/* Hackathon Pill */}
-        <div className="dlp-tag dlp-tag-red">
-          <Sparkles size={14} color="#f87171" />
-          <span>IDC 3.0 Hackathon • Real-Time Payment Gateway</span>
+      {/* ── Hero Section with Background Video ── */}
+      <section className="dlp-hero-section">
+        {/* Ambient Video Background */}
+        <div className="dlp-hero-video-wrap" aria-hidden="true">
+          <video
+            ref={heroVideoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="dlp-hero-video"
+          >
+            <source src="/spac.mp4" type="video/mp4" />
+          </video>
+          <div className="dlp-hero-video-overlay" />
         </div>
 
-        {/* Giant Headline */}
-        <h1 className="dlp-hero-headline">
-          <span className="dlp-hero-line-1">The Next-Gen</span>
-          <span className="dlp-hero-line-2 dlp-gradient-text">Instant Payment Gateway</span>
-        </h1>
+        <div className="dlp-container dlp-hero-wrapper">
+          {/* Hackathon Pill */}
+          <div className="dlp-tag dlp-tag-red">
+            <Sparkles size={14} color="#f87171" />
+            <span>IDC 3.0 Hackathon • Real-Time Payment Gateway</span>
+          </div>
 
-        {/* Subtitle */}
-        <p className="dlp-hero-subtitle">
-          Engineered from scratch in 24 hours at <strong>IDC 3.0</strong>. Zero-lag UPI-style transactions,
-          millisecond PIN authorization, camera QR scanner, live soundbox notifications, and an atomic double-entry banking ledger.
-        </p>
+          {/* Giant Headline */}
+          <h1 className="dlp-hero-headline">
+            <span className="dlp-hero-line-1">The Next-Gen</span>
+            <span className="dlp-hero-line-2 dlp-gradient-text">Instant Payment Gateway</span>
+          </h1>
 
+          {/* Subtitle */}
+          <p className="dlp-hero-subtitle">
+            Engineered from scratch in 24 hours at <strong>IDC 3.0</strong>. Zero-lag UPI-style transactions,
+            millisecond PIN authorization, camera QR scanner, live soundbox notifications, and an atomic double-entry banking ledger.
+          </p>
+        </div>
       </section>
 
 
