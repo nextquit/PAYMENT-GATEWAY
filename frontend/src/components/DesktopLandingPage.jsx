@@ -4,28 +4,12 @@ import GalaxyButton from './GalaxyButton';
 import './DesktopLandingPage.css';
 import {
   ShieldCheck,
-  QrCode,
   Lock,
-  Volume2,
   Database,
-  RefreshCw,
-  Star,
   Smartphone,
   MessageSquareText,
-  ArrowRight,
-  ChevronRight,
-  ExternalLink,
-  CheckCircle2,
   Clock,
-  Layers,
-  Terminal,
-  Activity,
-  ArrowUpRight,
   Sparkles,
-  Send,
-  Users,
-  Award,
-  ChevronDown,
   Check,
   Copy,
   Server,
@@ -192,125 +176,7 @@ export default function DesktopLandingPage({
 
 
 
-      {/* ── Features Bento Grid ── */}
-      <section className="dlp-section" id="features">
-        <div className="dlp-container">
-          <div className="dlp-section-header">
-            <div className="dlp-tag dlp-tag-red">
-              <Layers size={14} color="#f87171" />
-              <span>Full-Stack Capabilities</span>
-            </div>
-            <h2 className="dlp-title-lg">Engineered for Velocity & Trust</h2>
-            <p className="dlp-desc-muted">
-              Every layer of HexaPay was purpose-built to deliver lightning speed without sacrificing cryptographic security or accounting rigor.
-            </p>
-          </div>
 
-          <div className="dlp-bento-grid">
-            {/* Bento 1: QR Scanner */}
-            <div className="dlp-bento-card">
-              <div>
-                <div className="dlp-bento-icon-wrap" style={{ background: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
-                  <QrCode size={26} color="#ef4444" />
-                </div>
-                <h3 className="dlp-bento-title">High-Speed Camera QR Scanner</h3>
-                <p className="dlp-bento-desc">
-                  Real-time video feed analysis utilizing <code>jsQR</code> to decode static and dynamic UPI/HexaPay QR codes with zero frame drop and millisecond payee resolution.
-                </p>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#f87171', fontWeight: 700 }}>
-                <span>Sub-15ms QR Decoding</span>
-                <ChevronRight size={14} />
-              </div>
-            </div>
-
-            {/* Bento 2: Cryptographic PIN */}
-            <div className="dlp-bento-card">
-              <div>
-                <div className="dlp-bento-icon-wrap" style={{ background: 'rgba(99, 102, 241, 0.12)', border: '1px solid rgba(99, 102, 241, 0.3)' }}>
-                  <Lock size={26} color="#818cf8" />
-                </div>
-                <h3 className="dlp-bento-title">Cryptographic PIN Gate</h3>
-                <p className="dlp-bento-desc">
-                  Every debit requires a validated 4-digit PIN hash with client-side salting. Intercepted session tokens cannot issue funds without the PIN key.
-                </p>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#818cf8', fontWeight: 700 }}>
-                <span>Zero Replay Attacks</span>
-                <ChevronRight size={14} />
-              </div>
-            </div>
-
-            {/* Bento 3: Soundbox Audio Alerts */}
-            <div className="dlp-bento-card">
-              <div>
-                <div className="dlp-bento-icon-wrap" style={{ background: 'rgba(245, 158, 11, 0.12)', border: '1px solid rgba(245, 158, 11, 0.3)' }}>
-                  <Volume2 size={26} color="#fbbf24" />
-                </div>
-                <h3 className="dlp-bento-title">Instant SoundBox Audio Alerts</h3>
-                <p className="dlp-bento-desc">
-                  Simulating merchant audio boxes, HexaPay synthesizes sound chimes (TrueCaller ringtone + Web Audio tones) the exact moment money arrives into the wallet.
-                </p>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#fbbf24', fontWeight: 700 }}>
-                <span>Background Audio Priming</span>
-                <ChevronRight size={14} />
-              </div>
-            </div>
-
-            {/* Bento 4: Atomic MongoDB Ledger */}
-            <div className="dlp-bento-card">
-              <div>
-                <div className="dlp-bento-icon-wrap" style={{ background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
-                  <Database size={26} color="#10b981" />
-                </div>
-                <h3 className="dlp-bento-title">ACID Double-Entry Ledger</h3>
-                <p className="dlp-bento-desc">
-                  Financial-grade double-entry transaction journal with atomic MongoDB <code>$inc</code> decrements/increments preventing concurrency race hazards.
-                </p>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#10b981', fontWeight: 700 }}>
-                <span>0% Double-Spend Risk</span>
-                <ChevronRight size={14} />
-              </div>
-            </div>
-
-            {/* Bento 5: Real-time Auto Sync */}
-            <div className="dlp-bento-card">
-              <div>
-                <div className="dlp-bento-icon-wrap" style={{ background: 'rgba(56, 189, 248, 0.12)', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
-                  <RefreshCw size={26} color="#38bdf8" />
-                </div>
-                <h3 className="dlp-bento-title">Live State Background Sync</h3>
-                <p className="dlp-bento-desc">
-                  Intelligent polling and push event listeners update account balances, transaction history, and top-of-screen toast banners without requiring manual page reloads.
-                </p>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#38bdf8', fontWeight: 700 }}>
-                <span>Zero UI Drift</span>
-                <ChevronRight size={14} />
-              </div>
-            </div>
-
-            {/* Bento 6: Live Judge Evaluation */}
-            <div className="dlp-bento-card">
-              <div>
-                <div className="dlp-bento-icon-wrap" style={{ background: 'rgba(168, 85, 247, 0.12)', border: '1px solid rgba(168, 85, 247, 0.3)' }}>
-                  <Star size={26} color="#c084fc" />
-                </div>
-                <h3 className="dlp-bento-title">Real-Time Judge Reviews Engine</h3>
-                <p className="dlp-bento-desc">
-                  Built specifically for hackathon judging panels to review, rate, and comment with instant sound alerts and live persistent storage across devices.
-                </p>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#c084fc', fontWeight: 700 }}>
-                <span>Live Audio Alerts On Review</span>
-                <ChevronRight size={14} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
       {/* ── Hackathon IDC 3.0 Story Timeline ── */}
@@ -596,7 +462,7 @@ export default function DesktopLandingPage({
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-              <a href="#features" style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>Features</a>
+              <a href="#mobile-access" style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>Mobile App</a>
               <button
                 onClick={() => {
                   if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
