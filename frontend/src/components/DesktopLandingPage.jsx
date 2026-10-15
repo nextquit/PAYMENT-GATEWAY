@@ -8,7 +8,6 @@ import {
   Database,
   Smartphone,
   MessageSquareText,
-  Clock,
   Sparkles,
   Check,
   Copy,
@@ -179,74 +178,10 @@ export default function DesktopLandingPage({
 
 
 
-      {/* ── Hackathon IDC 3.0 Story Timeline ── */}
-      <section className="dlp-section" id="timeline">
+      {/* ── Developers of This Payment Gateway ── */}
+      <section className="dlp-section" id="developers">
         <div className="dlp-container">
-          <div className="dlp-section-header">
-            <div className="dlp-tag dlp-tag-red">
-              <Clock size={14} color="#f87171" />
-              <span>The 24-Hour Odyssey</span>
-            </div>
-            <h2 className="dlp-title-lg">Built Under Pressure at IDC 3.0</h2>
-            <p className="dlp-desc-muted">
-              From zero lines of code to a production-grade real-time payment gateway within a single 24-hour sprint.
-            </p>
-          </div>
-
-          <div className="dlp-timeline">
-            {[
-              {
-                hour: '00:00',
-                title: 'Problem Statement & Architecture Blueprint',
-                desc: 'Unlocked hackathon challenge. Architected double-entry balance schemas, MongoDB transaction isolation, and chosen React 19 + Node.js stack.',
-                icon: '💡'
-              },
-              {
-                hour: '06:00',
-                title: 'Core Banking Engine & Atomic Locks',
-                desc: 'Built atomic balance transfer APIs, double-entry ledger persistence, and simulated banking top-up rails in Express backend.',
-                icon: '⚡'
-              },
-              {
-                hour: '12:00',
-                title: 'Camera QR Scanner & Mobile-First PWA',
-                desc: 'Integrated real-time video QR camera decoding (jsQR), mobile bottom navigation, and dynamic merchant QR generation.',
-                icon: '📱'
-              },
-              {
-                hour: '18:00',
-                title: 'SoundBox Audio Alerts & Background Sync',
-                desc: 'Configured Web Audio API synthesizers and TrueCaller ringtones for merchant audio payment announcements and state polling.',
-                icon: '🔊'
-              },
-              {
-                hour: '24:00',
-                title: 'Security Hardening, Live Reviews & Final Deploy',
-                desc: 'Implemented PIN security gate, anti-tamper protections, judge feedback modal, and zero-downtime deployment for IDC 3.0 evaluation.',
-                icon: '🏆'
-              },
-            ].map((t, idx) => (
-              <div key={idx} className="dlp-timeline-item">
-                <div className="dlp-timeline-dot">
-                  <span>{t.hour}</span>
-                </div>
-                <div className="dlp-timeline-content">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-                    <span style={{ fontSize: '1.2rem' }}>{t.icon}</span>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#ffffff', margin: 0 }}>
-                      {t.title}
-                    </h3>
-                  </div>
-                  <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, margin: 0 }}>
-                    {t.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Developers of This Payment Gateway */}
-          <div className="dlp-builders-box" style={{ marginTop: '3.5rem' }}>
+          <div className="dlp-builders-box">
             <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#ef4444', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>
               The Builders
             </div>
