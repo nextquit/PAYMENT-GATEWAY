@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">HexaPay</string>
+    <string name="title_activity_main">HexaPay</string>
+    <string name="package_name">com.hexapay.app</string>
+    <string name="custom_url_scheme">com.hexapay.app</string>
+</resources>

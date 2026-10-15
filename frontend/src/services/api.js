@@ -1,5 +1,12 @@
-const defaultBackendUrl =
-  typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+const isCapacitorApp = typeof window !== 'undefined' && (
+  window.Capacitor !== undefined ||
+  window.location.protocol === 'capacitor:' ||
+  window.location.hostname === 'localhost' && window.location.port === ''
+);
+
+const defaultBackendUrl = isCapacitorApp
+  ? 'https://payment-gateway-ysz4.onrender.com'
+  : (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
     ? 'http://localhost:5000'
     : 'https://payment-gateway-ysz4.onrender.com';
 

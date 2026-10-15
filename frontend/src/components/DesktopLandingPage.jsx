@@ -3,7 +3,6 @@ import QRCode from 'qrcode';
 import GalaxyButton from './GalaxyButton';
 import './DesktopLandingPage.css';
 import {
-  Zap,
   ShieldCheck,
   QrCode,
   Lock,
@@ -28,7 +27,13 @@ import {
   Award,
   ChevronDown,
   Check,
-  Copy
+  Copy,
+  Server,
+  Network,
+  Rocket,
+  Layout,
+  Palette,
+  Download
 } from 'lucide-react';
 
 export default function DesktopLandingPage({
@@ -400,7 +405,7 @@ export default function DesktopLandingPage({
                     />
                     <div className="dlp-dev-card-overlay">
                       <div className="dlp-dev-card-name">Anubhav Tiwari</div>
-                      <div className="dlp-dev-card-role">Full-Stack Architect & Security</div>
+                      <div className="dlp-dev-card-role">Backend • API Integration • Deployment</div>
                       <div className="dlp-dev-flip-hint">
                         <span>Hover to inspect stack</span>
                         <span>↻</span>
@@ -413,7 +418,7 @@ export default function DesktopLandingPage({
                     <div className="dlp-dev-back-top">
                       <div>
                         <div className="dlp-dev-back-title">Anubhav Tiwari</div>
-                        <div className="dlp-dev-back-role">Full-Stack Architect & Security</div>
+                        <div className="dlp-dev-back-role">Backend • API Integration • Deployment</div>
                       </div>
                       <span style={{ fontSize: '1.2rem' }}>👨‍💻</span>
                     </div>
@@ -421,19 +426,19 @@ export default function DesktopLandingPage({
                     <div>
                       <div className="dlp-dev-back-section-label">Core Tech Stack</div>
                       <div className="dlp-dev-stack-tags">
-                        <span className="dlp-stack-tag dlp-stack-tag-accent">React 19</span>
-                        <span className="dlp-stack-tag">Node.js</span>
-                        <span className="dlp-stack-tag">Express</span>
-                        <span className="dlp-stack-tag dlp-stack-tag-emerald">MongoDB ACID</span>
-                        <span className="dlp-stack-tag">Vite</span>
-                        <span className="dlp-stack-tag">Web Audio API</span>
-                        <span className="dlp-stack-tag">jsQR Scanner</span>
-                        <span className="dlp-stack-tag">SHA-256 PIN</span>
+                        <div className="dlp-stack-tag dlp-stack-tag-backend">
+                          <Server size={15} className="dlp-stack-icon" />
+                          <span>Backend</span>
+                        </div>
+                        <div className="dlp-stack-tag dlp-stack-tag-api">
+                          <Network size={15} className="dlp-stack-icon" />
+                          <span>API Integration</span>
+                        </div>
+                        <div className="dlp-stack-tag dlp-stack-tag-deploy">
+                          <Rocket size={15} className="dlp-stack-icon" />
+                          <span>Deployment</span>
+                        </div>
                       </div>
-                    </div>
-
-                    <div className="dlp-dev-back-desc">
-                      ⚡ Architected end-to-end UPI payment rails, atomic double-entry banking ledger & real-time audio soundbox notifications.
                     </div>
                   </div>
                 </div>
@@ -451,7 +456,7 @@ export default function DesktopLandingPage({
                     />
                     <div className="dlp-dev-card-overlay">
                       <div className="dlp-dev-card-name">Palak Singh</div>
-                      <div className="dlp-dev-card-role">Core Backend & Payment Engine</div>
+                      <div className="dlp-dev-card-role">Frontend • UI/UX Design • MongoDB Setup</div>
                       <div className="dlp-dev-flip-hint">
                         <span>Hover to inspect stack</span>
                         <span>↻</span>
@@ -464,27 +469,27 @@ export default function DesktopLandingPage({
                     <div className="dlp-dev-back-top">
                       <div>
                         <div className="dlp-dev-back-title">Palak Singh</div>
-                        <div className="dlp-dev-back-role">Core Backend & Payment Engine</div>
+                        <div className="dlp-dev-back-role">Frontend • UI/UX Design • MongoDB Setup</div>
                       </div>
-                      <span style={{ fontSize: '1.2rem' }}>⚡</span>
+                      <span style={{ fontSize: '1.2rem' }}>🎨</span>
                     </div>
 
                     <div>
                       <div className="dlp-dev-back-section-label">Core Tech Stack</div>
                       <div className="dlp-dev-stack-tags">
-                        <span className="dlp-stack-tag dlp-stack-tag-accent">Node.js</span>
-                        <span className="dlp-stack-tag">Express.js</span>
-                        <span className="dlp-stack-tag dlp-stack-tag-emerald">MongoDB</span>
-                        <span className="dlp-stack-tag">RESTful APIs</span>
-                        <span className="dlp-stack-tag">JWT Auth</span>
-                        <span className="dlp-stack-tag">Concurrency Locks</span>
-                        <span className="dlp-stack-tag">Ledger Journal</span>
-                        <span className="dlp-stack-tag">Event Polling</span>
+                        <div className="dlp-stack-tag dlp-stack-tag-frontend">
+                          <Layout size={15} className="dlp-stack-icon" />
+                          <span>Frontend</span>
+                        </div>
+                        <div className="dlp-stack-tag dlp-stack-tag-design">
+                          <Palette size={15} className="dlp-stack-icon" />
+                          <span>UI/UX Design</span>
+                        </div>
+                        <div className="dlp-stack-tag dlp-stack-tag-database">
+                          <Database size={15} className="dlp-stack-icon" />
+                          <span>MongoDB Setup</span>
+                        </div>
                       </div>
-                    </div>
-
-                    <div className="dlp-dev-back-desc">
-                      🚀 Engineered high-throughput payment execution, sub-80ms transaction settlement & zero double-spend concurrency protections.
                     </div>
                   </div>
                 </div>
@@ -513,16 +518,22 @@ export default function DesktopLandingPage({
                 and instant soundbox ringtone alerts. Point your phone camera at this QR code right now!
               </p>
 
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
                 <button onClick={handleCopyShareLink} className="dlp-btn-secondary">
                   {copiedLink ? <Check size={16} color="#10b981" /> : <Copy size={16} />}
                   <span>{copiedLink ? 'Link Copied!' : 'Copy App URL'}</span>
                 </button>
 
-                <button onClick={onLaunchApp} className="dlp-btn-primary">
-                  <Zap size={16} fill="#ffffff" />
-                  <span>Launch Web App on Desktop</span>
-                </button>
+                <a
+                  href="/HexaPay.apk"
+                  download="HexaPay.apk"
+                  className="dlp-btn-primary"
+                  style={{ textDecoration: 'none' }}
+                  title="Direct Download HexaPay Android APK"
+                >
+                  <Download size={16} />
+                  <span>Download APK</span>
+                </a>
               </div>
             </div>
 
