@@ -8,7 +8,6 @@ import {
   Database,
   Smartphone,
   MessageSquareText,
-  Sparkles,
   Check,
   Copy,
   Server,
@@ -153,12 +152,6 @@ export default function DesktopLandingPage({
         </div>
 
         <div className="dlp-container dlp-hero-wrapper">
-          {/* Hackathon Pill */}
-          <div className="dlp-tag dlp-tag-red">
-            <Sparkles size={14} color="#f87171" />
-            <span>IDC 3.0 Hackathon • Real-Time Payment Gateway</span>
-          </div>
-
           {/* Giant Headline */}
           <h1 className="dlp-hero-headline">
             <span className="dlp-hero-line-1">The Next-Gen</span>
