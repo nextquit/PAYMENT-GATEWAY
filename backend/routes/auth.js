@@ -158,11 +158,15 @@ router.post('/login', async (req, res) => {
     }
 
     let trimmedUsername = username.trim().toLowerCase();
-    if (trimmedUsername === 'fakepayment' || trimmedUsername === 'fakepayment@idc' || trimmedUsername === 'fakemoney') {
+    // Normalize common aliases to the single demo account
+    if (
+      trimmedUsername === 'fakepayment' ||
+      trimmedUsername === 'fakepayment@idc' ||
+      trimmedUsername === 'fakemoney'
+    ) {
       trimmedUsername = 'fakemoney@idc';
-    } else if (trimmedUsername === 'fakemoney2' || trimmedUsername === 'fakepayment2') {
-      trimmedUsername = 'fakemoney2@idc';
     }
+
     const user = await User.findOne({ username: trimmedUsername });
 
     if (!user) {
@@ -182,10 +186,7 @@ router.post('/login', async (req, res) => {
 
     const token = generateToken(user._id);
     const userObj = user.toJSON();
-    if (userObj.username === 'fakemoney2@idc') {
-      userObj.fictionalBank = userObj.fictionalBank || 'HDFC Bank';
-      userObj.fullName = userObj.fullName || 'Palak Singh';
-    } else if (userObj.username === 'fakemoney@idc') {
+    if (userObj.username === 'fakemoney@idc') {
       userObj.fictionalBank = userObj.fictionalBank || 'Union Bank';
       userObj.fullName = userObj.fullName || 'Anubhav Tiwari';
     }

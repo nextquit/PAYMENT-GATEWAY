@@ -5,16 +5,11 @@ import './DesktopLandingPage.css';
 import {
   ShieldCheck,
   Lock,
-  Database,
+
   Smartphone,
   MessageSquareText,
   Check,
   Copy,
-  Server,
-  Network,
-  Rocket,
-  Layout,
-  Palette,
   Download
 } from 'lucide-react';
 
@@ -170,128 +165,6 @@ export default function DesktopLandingPage({
 
 
 
-
-      {/* ── Developers of This Payment Gateway ── */}
-      <section className="dlp-section" id="developers">
-        <div className="dlp-container">
-          <div className="dlp-builders-box">
-            <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#ef4444', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>
-              The Builders
-            </div>
-            <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.6rem' }}>
-              Developers of This Payment Gateway
-            </h3>
-            <p style={{ fontSize: '0.92rem', color: 'rgba(255,255,255,0.6)', maxWidth: '580px', margin: '0 auto 2.2rem auto', lineHeight: 1.5 }}>
-              Architected and engineered from scratch in 24 hours at IDC 3.0 Hackathon.
-            </p>
-
-            {/* Developer 3D Flip Cards */}
-            <div className="dlp-dev-grid">
-              {/* Card 1: Anubhav Tiwari */}
-              <div className="dlp-dev-card-wrapper">
-                <div className="dlp-dev-card-inner">
-                  {/* Front Side: Photo & Info */}
-                  <div className="dlp-dev-card-front">
-                    <img
-                      src="/anubhav.png"
-                      alt="Anubhav Tiwari"
-                      className="dlp-dev-card-img"
-                    />
-                    <div className="dlp-dev-card-overlay">
-                      <div className="dlp-dev-card-name">Anubhav Tiwari</div>
-                      <div className="dlp-dev-card-role">Backend • API Integration • Deployment</div>
-                      <div className="dlp-dev-flip-hint">
-                        <span>Hover to inspect stack</span>
-                        <span>↻</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Back Side: Tech Stack Showcase */}
-                  <div className="dlp-dev-card-back">
-                    <div className="dlp-dev-back-top">
-                      <div>
-                        <div className="dlp-dev-back-title">Anubhav Tiwari</div>
-                        <div className="dlp-dev-back-role">Backend • API Integration • Deployment</div>
-                      </div>
-                      <span style={{ fontSize: '1.2rem' }}>👨‍💻</span>
-                    </div>
-
-                    <div>
-                      <div className="dlp-dev-back-section-label">Core Tech Stack</div>
-                      <div className="dlp-dev-stack-tags">
-                        <div className="dlp-stack-tag dlp-stack-tag-backend">
-                          <Server size={15} className="dlp-stack-icon" />
-                          <span>Backend</span>
-                        </div>
-                        <div className="dlp-stack-tag dlp-stack-tag-api">
-                          <Network size={15} className="dlp-stack-icon" />
-                          <span>API Integration</span>
-                        </div>
-                        <div className="dlp-stack-tag dlp-stack-tag-deploy">
-                          <Rocket size={15} className="dlp-stack-icon" />
-                          <span>Deployment</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 2: Palak Singh */}
-              <div className="dlp-dev-card-wrapper">
-                <div className="dlp-dev-card-inner">
-                  {/* Front Side: Photo & Info */}
-                  <div className="dlp-dev-card-front">
-                    <img
-                      src="/palak.png"
-                      alt="Palak Singh"
-                      className="dlp-dev-card-img"
-                    />
-                    <div className="dlp-dev-card-overlay">
-                      <div className="dlp-dev-card-name">Palak Singh</div>
-                      <div className="dlp-dev-card-role">Frontend • UI/UX Design • MongoDB Setup</div>
-                      <div className="dlp-dev-flip-hint">
-                        <span>Hover to inspect stack</span>
-                        <span>↻</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Back Side: Tech Stack Showcase */}
-                  <div className="dlp-dev-card-back">
-                    <div className="dlp-dev-back-top">
-                      <div>
-                        <div className="dlp-dev-back-title">Palak Singh</div>
-                        <div className="dlp-dev-back-role">Frontend • UI/UX Design • MongoDB Setup</div>
-                      </div>
-                      <span style={{ fontSize: '1.2rem' }}>🎨</span>
-                    </div>
-
-                    <div>
-                      <div className="dlp-dev-back-section-label">Core Tech Stack</div>
-                      <div className="dlp-dev-stack-tags">
-                        <div className="dlp-stack-tag dlp-stack-tag-frontend">
-                          <Layout size={15} className="dlp-stack-icon" />
-                          <span>Frontend</span>
-                        </div>
-                        <div className="dlp-stack-tag dlp-stack-tag-design">
-                          <Palette size={15} className="dlp-stack-icon" />
-                          <span>UI/UX Design</span>
-                        </div>
-                        <div className="dlp-stack-tag dlp-stack-tag-database">
-                          <Database size={15} className="dlp-stack-icon" />
-                          <span>MongoDB Setup</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ── Mobile Experience Showcase & QR Code ── */}
       <section className="dlp-section" id="mobile-access">

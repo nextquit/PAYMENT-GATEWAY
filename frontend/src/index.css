@@ -942,6 +942,18 @@ button:disabled {
   .auth-grid .galaxy-button a {
     width: 100% !important;
   }
+
+  /* Feedbacks standalone button below login card */
+  .auth-feedbacks-btn {
+    display: flex !important;
+    width: 100% !important;
+  }
+
+  .auth-feedbacks-btn button,
+  .auth-feedbacks-btn a {
+    width: 100% !important;
+    justify-content: center !important;
+  }
 }
 
 @media (min-width: 920px) {
@@ -1590,6 +1602,18 @@ button:disabled {
 
 .galaxy-button.review-inner-glow .star {
   box-shadow: 0 0 3px #ffffff, 0 0 6px rgba(248, 113, 113, 0.8) !important;
+}
+
+/* Auth page standalone feedbacks button - full width stretch */
+.auth-feedbacks-btn {
+  display: flex !important;
+  width: 100% !important;
+}
+
+.auth-feedbacks-btn button,
+.auth-feedbacks-btn a {
+  width: 100% !important;
+  justify-content: center !important;
 }
 
 .galaxy-button.theme-subtle-green .text {

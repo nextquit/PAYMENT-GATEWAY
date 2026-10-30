@@ -1,14 +1,6 @@
-const isCapacitorApp = typeof window !== 'undefined' && (
-  window.Capacitor !== undefined ||
-  window.location.protocol === 'capacitor:' ||
-  window.location.hostname === 'localhost' && window.location.port === ''
-);
-
-const defaultBackendUrl = isCapacitorApp
-  ? 'https://payment-gateway-ysz4.onrender.com'
-  : (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
-    ? 'http://localhost:5000'
-    : 'https://payment-gateway-ysz4.onrender.com';
+const defaultBackendUrl = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
+  ? 'http://localhost:5000'
+  : 'https://payment-gateway-ysz4.onrender.com';
 
 const rawUrl = (import.meta.env.VITE_API_URL || defaultBackendUrl).replace(/\/+$/, '');
 const API_BASE = rawUrl.endsWith('/api') ? rawUrl : `${rawUrl}/api`;

@@ -1,9 +1,0 @@
-{
-  "appId": "com.hexapay.app",
-  "appName": "HexaPay",
-  "webDir": "dist",
-  "server": {
-    "androidScheme": "https",
-    "cleartext": true
-  }
-}

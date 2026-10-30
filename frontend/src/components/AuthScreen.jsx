@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import SimpleCaptcha from './SimpleCaptcha';
+import GalaxyButton from './GalaxyButton';
 import { 
   Sparkles, 
   Lock, 
@@ -14,10 +15,11 @@ import {
   EyeOff,
   Zap,
   CheckCircle2,
-  Shield
+  Shield,
+  MessageSquareText
 } from 'lucide-react';
 
-const AuthScreen = () => {
+const AuthScreen = ({ onOpenFeedbacks, hasNewFeedback = false }) => {
   const { login } = useAuth();
 
   // Login form state
@@ -340,6 +342,35 @@ const AuthScreen = () => {
           </form>
 
         </div>
+
+        {/* Feedbacks Button - outside the box */}
+        {onOpenFeedbacks && (
+          <div style={{ marginTop: '1rem', width: '100%' }}>
+            <GalaxyButton
+              shape="pill"
+              variant="subtle-green"
+              className={`auth-feedbacks-btn${hasNewFeedback ? ' review-inner-glow' : ''}`}
+              onClick={onOpenFeedbacks}
+              title={hasNewFeedback ? "New judge review received! Click to view" : "View Judges Feedbacks"}
+              icon={<MessageSquareText size={15} strokeWidth={2.4} color={hasNewFeedback ? '#fca5a5' : '#86efac'} />}
+            >
+              Feedbacks
+              {hasNewFeedback && (
+                <span
+                  style={{
+                    display: 'inline-block',
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    background: '#ef4444',
+                    boxShadow: '0 0 8px #ef4444',
+                    marginLeft: '5px',
+                  }}
+                />
+              )}
+            </GalaxyButton>
+          </div>
+        )}
 
       </div>
     </div>

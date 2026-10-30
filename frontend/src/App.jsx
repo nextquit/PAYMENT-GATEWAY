@@ -109,7 +109,7 @@ const Dashboard = ({ onBackToLanding }) => {
               Welcome back,
             </div>
             <h1 style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--text-main)', letterSpacing: '-0.02em' }}>
-              {user?.fullName || (user?.username === 'fakemoney2@idc' ? 'Palak Singh' : 'Anubhav Tiwari')}
+              {user?.fullName || 'Anubhav Tiwari'}
             </h1>
           </div>
 
@@ -517,18 +517,6 @@ const AppContent = () => {
       return <FeedbacksPage onBack={handleBackFromFeedbacks} />;
     }
 
-  // Desktop & Laptop Screen: Show full-featured scrolling showcase page
-  if (!isMobile && desktopViewMode === 'landing') {
-    return (
-      <DesktopLandingPage
-        onOpenFeedbacks={handleDesktopFeedbackClick}
-        hasNewFeedback={hasNewFeedback}
-        onLaunchApp={() => setDesktopViewMode('app')}
-        user={user}
-      />
-    );
-  }
-
   if (loading) {
     return (
       <div style={{
@@ -576,7 +564,7 @@ const AppContent = () => {
           onOpenAuth={() => {}}
         />
         <main className="main-content auth-main-content" style={{ width: '100%', flex: 1, display: 'flex', flexDirection: 'column' }}>
-          <AuthScreen />
+          <AuthScreen onOpenFeedbacks={handleDesktopFeedbackClick} hasNewFeedback={hasNewFeedback} />
         </main>
       </div>
     );
