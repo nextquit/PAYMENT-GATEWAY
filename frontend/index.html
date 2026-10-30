@@ -26,6 +26,24 @@
 <body style="margin: 0; background-color: #06080d;">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+  <script>
+    // Disable DevTools shortcuts and right-click
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    document.addEventListener('keydown', function(e) {
+      // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U, F12
+      if (
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' ||
+                                      e.key === 'J' || e.key === 'j' ||
+                                      e.key === 'C' || e.key === 'c')) ||
+        (e.ctrlKey && (e.key === 'U' || e.key === 'u')) ||
+        e.key === 'F12'
+      ) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    });
+  </script>
 </body>
 
 </html>
