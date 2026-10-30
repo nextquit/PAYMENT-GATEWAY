@@ -322,10 +322,13 @@ const AppContent = () => {
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window === 'undefined') return 'home';
     const urlParams = new URLSearchParams(window.location.search);
+    // On desktop/laptop always open feedbacks page directly
+    const isDesktop = window.innerWidth > 768;
     return (
       urlParams.get('view') === 'feedbacks' ||
       window.location.pathname === '/feedbacks' ||
-      window.location.hash === '#feedbacks'
+      window.location.hash === '#feedbacks' ||
+      isDesktop
     ) ? 'feedbacks' : 'home';
   });
 
