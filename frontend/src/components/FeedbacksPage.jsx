@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { api } from '../services/api';
+import { playFeedbackNotificationSound, preloadFeedbackSound } from '../utils/sound';
 import { 
   Star, 
   RotateCw, 
@@ -166,7 +167,16 @@ const FeedbacksPage = ({ onBack }) => {
     document.title = 'HexaPay - Judges Feedbacks';
     loadFeedbacks();
 
+    // Unlock AudioContext on mount — user interacted (clicked button) to get here
+    // This resumes the shared AudioContext in sound.js and preloads the buffer if needed
+    try {
+      preloadFeedbackSound();
+    } catch (e) {}
+
     const handleIncomingFeedback = () => {
+      // Play sound directly here — user has already interacted with the page
+      // (they clicked to navigate here), so AudioContext is unlocked
+      playFeedbackNotificationSound();
       loadFeedbacks(false);
     };
 

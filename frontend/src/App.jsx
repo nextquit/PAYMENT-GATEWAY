@@ -114,28 +114,7 @@ const Dashboard = ({ onBackToLanding }) => {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            {onBackToLanding && (
-              <button
-                onClick={onBackToLanding}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  background: 'rgba(239, 68, 68, 0.1)',
-                  border: '1px solid rgba(239, 68, 68, 0.3)',
-                  color: '#ef4444',
-                  padding: '0.4rem 0.85rem',
-                  borderRadius: '9999px',
-                  fontSize: '0.8rem',
-                  fontWeight: '700',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                }}
-              >
-                ← Back to Showcase
-              </button>
-            )}
-
+            
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -428,12 +407,16 @@ const AppContent = () => {
           localStorage.setItem('hexa_has_unread_feedback', 'true');
           setHasNewFeedback(true);
 
-          // Play true_caller notification ringtone
-          playFeedbackNotificationSound();
-
-          // Dispatch global event for FeedbacksPage auto-refresh
+          // Dispatch global event for FeedbacksPage auto-refresh + sound
+          // FeedbacksPage handles sound itself when user is inside it (AudioContext already unlocked)
+          // Only play here when user is NOT on feedbacks view
           if (typeof window !== 'undefined') {
             window.dispatchEvent(new CustomEvent('new_feedback_received', { detail: latestFb }));
+          }
+
+          if (currentViewRef.current !== 'feedbacks') {
+            // Play true_caller notification ringtone only when not already on feedbacks page
+            playFeedbackNotificationSound();
           }
         }
       } catch (err) {
